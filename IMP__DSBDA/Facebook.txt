@@ -1,0 +1,198 @@
+mport pandas as pd
+import io
+df = pd.read_csv('dataset_Facebook.csv')
+df.head(5)
+
+
+df['type']
+
+
+print(df.columns)
+
+
+
+df[['type','category']]
+
+
+#describing the dataframe
+df.describe()
+
+
+#subset-1
+df1=df[['pagetotallikes','category','postmonth','postweekday']].loc[0:15]
+df1
+
+
+#subset-2
+df2=df[['pagetotallikes','category','postmonth','postweekday']].loc[16:30]
+df2
+
+
+#subset-3
+df3=df[['pagetotallikes','category','postmonth','postweekday']].loc[31:50]
+df3
+
+
+#merging all subset
+merging=pd.concat([df1,df2,df3])
+merging
+
+
+df.loc[1]
+
+
+df.loc[[1,5,7]]
+
+
+df.loc[1:7,['like','share']]
+
+
+df.sort_values(by = "like",ascending= False)
+
+
+
+df.sort_values("like")
+
+
+
+df.sort_values(by = "like",ascending= False, kind="mergesort")
+
+
+df.sort_values(by=["like", "share"])
+
+
+
+#transposing data
+
+transposing=df.transpose()
+transposing
+
+
+
+df.shape
+
+
+selective_df = pd.DataFrame(df,columns =['like','share','Category','Type'])
+
+selective_df.head(5)
+
+
+
+pivot_table = pd.pivot_table(selective_df,index= ['Category','like'])
+
+print(pivot_table)
+
+
+pivot_table.shape
+
+
+pivot_table.reset_index(inplace=True)
+
+pivot_table
+
+
+
+data1 = {'Name':['Jai', 'Princi', 'Gaurav', 'Anuj'], 
+        'Age':[27, 24, 22, 32], 
+        'Address':['Nagpur', 'Kanpur', 'Allahabad', 'Kannuaj'], 
+        'Qualification':['Msc', 'MA', 'MCA', 'Phd']} 
+
+
+data2 = {'Name':['Abhi', 'Ayushi', 'Dhiraj', 'Hitesh'], 
+        'Age':[17, 14, 12, 52], 
+        'Address':['Nagpur', 'Kanpur', 'Allahabad', 'Kannuaj'], 
+        'Qualification':['Btech', 'B.A', 'Bcom', 'B.hons']} 
+
+df = pd.DataFrame(data1,index=[0, 1, 2, 3])
+
+df1 = pd.DataFrame(data2, index=[4, 5, 6, 7])
+
+print(df, "\n\n", df1) 
+
+
+frames = [df, df1]
+res1 = pd.concat(frames)
+res1
+
+
+df_new = pd.DataFrame(data1,index=[0, 1, 2, 3])
+
+df1 = pd.DataFrame(data2, index=[2, 3, 6, 7]) 
+
+print(df, "\n\n", df1) 
+
+
+res2 = pd.concat([df, df1], axis=1, join='inner')
+
+
+res2
+
+
+
+
+# Define a dictionary containing employee data 
+data1 = {'key': ['K0', 'K1', 'K2', 'K3'],
+         'Name':['Jai', 'Princi', 'Gaurav', 'Anuj'], 
+        'Age':[27, 24, 22, 32],} 
+   
+# Define a dictionary containing employee data 
+data2 = {'key': ['K0', 'K1', 'K2', 'K3'],
+         'Address':['Nagpur', 'Kanpur', 'Allahabad', 'Kannuaj'], 
+        'Qualification':['Btech', 'B.A', 'Bcom', 'B.hons']} 
+ 
+# Convert the dictionary into DataFrame  
+df = pd.DataFrame(data1)
+ 
+# Convert the dictionary into DataFrame  
+df1 = pd.DataFrame(data2) 
+  
+ 
+print(df, "\n\n", df1) 
+
+res = pd.merge(df, df1, on='key')
+res
+
+
+
+
+# Define a dictionary containing employee data 
+data1 = {'key': ['K0', 'K1', 'K2', 'K3'],
+         'key1': ['K0', 'K1', 'K0', 'K1'],
+         'Name':['Jai', 'Princi', 'Gaurav', 'Anuj'], 
+        'Age':[27, 24, 22, 32],} 
+   
+# Define a dictionary containing employee data 
+data2 = {'key': ['K0', 'K1', 'K2', 'K3'],
+         'key1': ['K0', 'K0', 'K0', 'K0'],
+         'Address':['Nagpur', 'Kanpur', 'Allahabad', 'Kannuaj'], 
+        'Qualification':['Btech', 'B.A', 'Bcom', 'B.hons']} 
+ 
+# Convert the dictionary into DataFrame  
+df = pd.DataFrame(data1)
+ 
+# Convert the dictionary into DataFrame  
+df1 = pd.DataFrame(data2) 
+  
+ 
+print(df, "\n\n", df1) 
+
+# merging dataframe using multiple keys
+res1 = pd.merge(df, df1, on=['key', 'key1'])
+ 
+res1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

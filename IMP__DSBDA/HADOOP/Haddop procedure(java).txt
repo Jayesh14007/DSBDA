@@ -1,0 +1,43 @@
+Terminal la he takaycha:
+start-all.sh
+start-dfs.sh
+jps
+
+
+Eclipse open karaycha > workspace tayar karyacha >workbench symbol yeta tyala click karayca
+
+
+Project name >javaproject > SalesCountry
+
+src >new >package >name(SalesCountry)
+
+package mdhlys sales country var select karaycha:
+
+new> class> SalesCountryDriver
+New> class> SalesCountryReducer
+New> class> SalesMapper
+
+Copy paste files from server:
+
+Main SalesCountry la right click karyacha > Build path >Configure >Libraries >Add external File >Add external jar
+
+left side la :
+File system > Usr > local >hadoop >share >hadoop  >mapreduce >common and core jar files(2.7.0) >add external jar files
+Same as above >Hadoop >common >common jar file(2.7.0)
+
+
+Export> java> jarfile >browse >create MYJAR.jar file on desktop >  next> browse> salescountry >finish
+
+Home me ek folder> I name ka folder> access log short file copy paste in I folder>
+Home mdhe MYJAR.jar (varti ji create keli hoti) Save karaychi 
+
+
+terminal la commnad taakaychi:
+
+hdfs dfs  -put  ~/I  / 
+
+hadoop jar MYJAR.jar /I  /O
+
+hdfs dfs -cat  /O /part-00000
+
+Firefox> localhost:50070 >utitlites >Browse system >O >download >save file> 
